@@ -1,8 +1,8 @@
-# CrawlMaze
+# Security Crawl Maze
 
-CrawlMaze is a comprehensive testbed for web security crawlers. It contains
+Security Crawl Maze is a comprehensive testbed for web security crawlers. It contains
 pages representing many (hopefully all) ways in which one can link resources
-from a valid HTML document. List of all the cases covered by CrawlMaze can be
+from a valid HTML document. List of all the cases covered by Security Crawl Maze can be
 found [below](#test-cases).
 
 ## Crawling vs Security Crawling
