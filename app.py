@@ -46,6 +46,11 @@ def full_url():
   return render_template("full-url.html")
 
 
+@app.route("/html/misc/path-relative-url.html")
+def path_relative_url():
+  return render_template("path-relative-url.html")
+
+
 @app.route("/html/<path:path>")
 def html(path):
   return send_from_directory("test-cases/html", path)
