@@ -22,7 +22,7 @@ from flask import jsonify
 from flask import request
 from flask import Response
 
-utils_module = Blueprint("utils", __name__)
+utils_module = Blueprint("utils_module", __name__)
 
 ROOT_DIR = os.path.dirname(__file__)
 EXPECTED_RESULTS_FILE = open(

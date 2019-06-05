@@ -13,6 +13,7 @@
 # limitations under the License.
 # ==============================================================================
 """The entry point for Flask App serving the testbed"s content."""
+from blueprints.headers import headers_module
 from blueprints.html import html_module
 from blueprints.javascript import javascript_module
 from blueprints.utils import utils_module
@@ -20,6 +21,7 @@ from flask import Flask
 from flask import render_template
 
 app = Flask(__name__)
+app.register_blueprint(headers_module, url_prefix="/headers")
 app.register_blueprint(html_module, url_prefix="/html")
 app.register_blueprint(javascript_module, url_prefix="/javascript")
 app.register_blueprint(utils_module)
