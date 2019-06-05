@@ -26,6 +26,7 @@
   "/html/body/script/src.found",
   "/html/body/svg/image/href.found",
   "/html/body/svg/image/xlink.found",
+  "/html/body/svg/script/href.found",
   "/html/body/table/background.found",
   "/html/body/table/td/background.found",
   "/html/body/video/src.found",
