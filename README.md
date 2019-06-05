@@ -89,7 +89,7 @@ returns:
 
 ## Test cases
 
-Implemented test cases (resources to be found) are available in the `expected-results.json` file.
+Implemented test cases (resources to be found) are available in the `blueprints/utils/resources/expected-results.json` file.
 
 ### Adding a test case
 
