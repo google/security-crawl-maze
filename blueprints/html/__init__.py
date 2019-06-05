@@ -12,23 +12,30 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
-"""The entry point for Flask App serving the testbed"s content."""
-from blueprints.html import html_module
-from blueprints.javascript import javascript_module
-from blueprints.utils import utils_module
-from flask import Flask
+"""Module serving all the traffic for html test cases."""
+from flask import abort
+from flask import Blueprint
 from flask import render_template
+from flask import send_from_directory
 
-app = Flask(__name__)
-app.register_blueprint(html_module, url_prefix="/html")
-app.register_blueprint(javascript_module, url_prefix="/javascript")
-app.register_blueprint(utils_module)
+html_module = Blueprint("html_module", __name__, template_folder="templates")
 
 
-@app.route("/")
-def index():
-  return render_template("index.html")
+@html_module.route("/misc/full-url.html")
+def full_url():
+  return render_template("full-url.html")
 
 
-if __name__ == "__main__":
-  app.run(host="0.0.0.0")
+@html_module.route("/misc/path-relative-url.html")
+def path_relative_url():
+  return render_template("path-relative-url.html")
+
+
+@html_module.route("/misc/protocol-relative-url.html")
+def protocol_relative_url():
+  return render_template("protocol-relative-url.html")
+
+
+@html_module.route("/<path:path>")
+def html_dir(path):
+  return send_from_directory("test-cases/html", path)

@@ -12,23 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
-"""The entry point for Flask App serving the testbed"s content."""
-from blueprints.html import html_module
-from blueprints.javascript import javascript_module
-from blueprints.utils import utils_module
-from flask import Flask
-from flask import render_template
+"""Module serving all the traffic for javascript test cases."""
+from flask import Blueprint
+from flask import send_from_directory
 
-app = Flask(__name__)
-app.register_blueprint(html_module, url_prefix="/html")
-app.register_blueprint(javascript_module, url_prefix="/javascript")
-app.register_blueprint(utils_module)
+javascript_module = Blueprint("javascript_module", __name__)
 
 
-@app.route("/")
-def index():
-  return render_template("index.html")
-
-
-if __name__ == "__main__":
-  app.run(host="0.0.0.0")
+@javascript_module.route("/<path:path>")
+def javascript_dir(path):
+  return send_from_directory("test-cases/javascript", path)

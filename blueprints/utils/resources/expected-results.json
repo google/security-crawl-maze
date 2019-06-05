@@ -25,7 +25,7 @@
   "/html/body/table/td/background.found",
   "/html/body/video/src.found",
   "/html/head/base/href.found",
-  "/html/head/comment/comment-conditional.found",
+  "/html/head/comment-conditional.found",
   "/html/head/import/implementation.found",
   "/html/head/link/href.found",
   "/html/head/meta/content-csp.found",

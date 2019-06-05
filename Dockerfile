@@ -17,8 +17,8 @@ RUN pip install -r /usr/src/app/requirements.txt
 
 # Copy all the other files.
 COPY app.py /usr/src/app/
+COPY blueprints /usr/src/app/blueprints
 COPY templates /usr/src/app/templates
-COPY resources /usr/src/app/resources
 COPY test-cases /usr/src/app/test-cases
 
 # Expose the Flask app's port.
