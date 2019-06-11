@@ -38,13 +38,9 @@ container or as a Python Flask app. Please, find the instructions below.
 2.  install pip dependencies `pip install -r requirements.txt`
 3.  run app `python app.py`
 
-### Deploy to Google Cloud
+### Deploy to Google Cloud/AWS/Azure
 
-1.  The Dockerfile is in the root directory and you can use it to deploy your
-    application to Google Cloud
-2.  Follow
-    [these](https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app)
-    instructions
+1.  You can use the Dockerfile in the root directory to build a container image and deploy it to a cloud of your choice.
 
 ### Conventions
 
@@ -62,6 +58,8 @@ container or as a Python Flask app. Please, find the instructions below.
     e.g. `html/body/a/href.html` will contain a link to
     `http://<HOST>/html/body/a/href.found`. This way it's easy to identify a
     test case that is not found by your crawler.
+*   Files without extensions under the `test-cases/` directory are required so
+    that links to API endpoints are generated.
 
 #### Expected results API endpoint
 
@@ -89,19 +87,25 @@ returns:
 
 ## Test cases
 
-Implemented test cases (resources to be found) are available in the `blueprints/utils/resources/expected-results.json` file.
+Implemented test cases (resources to be found) are available in the
+  `blueprints/utils/resources/expected-results.json` file.
 
 ### Adding a test case
 
-1.  Add your test case
-    *   If you're adding a file to already existing folder go to point 2.
-    *   If you're creating a new folder you have to add an endpoint in `app.py`
-        that serves files from your directory. You also have to remember to add
-        a rule in `Dockerfile` to include your files in the container image.
-2.  Link your test case from corresponding `index.html` file
-3.  Add record to expected_results.json.
-4.  Test your crawler with the new test case!
-5.  Before creating a PR, make sure your code follows the
+1.  Create a file for your test case and place it in an appropriate directory.
+    *   If your test content is generated dynamically by an API endpoint, add a
+        file without an extension (e.g. `test-cases/headers/link`). This is to
+        make sure the link to the test case is generated and is discoverable by
+        crawlers.
+    *   If you're NOT creating any new child folder in the `test-cases/`
+        directory go to point 2.
+    *   Otherwise you have to add a new blueprint directory with all the
+        relevant components. You can reuse the structure of already existing
+        blueprints.
+2.  Add record which is to be found to the
+    `blueprints/utils/resources/expected_results.json` file.
+3.  Test your crawler with the new test case!
+4.  Before creating a PR, make sure your code follows the
     [Google Python Language Rules](https://github.com/google/styleguide/blob/gh-pages/pyguide.md#2-python-language-rules)
 
 ### Credits

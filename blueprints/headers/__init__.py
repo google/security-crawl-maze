@@ -13,41 +13,59 @@
 # limitations under the License.
 # ==============================================================================
 """Module serving all the traffic for response headers test cases."""
+import os
+from flask import abort
 from flask import Blueprint
+from flask import render_template
 from flask import Response
 from flask import send_from_directory
 
-headers_module = Blueprint("headers_module", __name__)
+headers_module = Blueprint(
+    "headers_module", __name__, template_folder="templates")
+
+# Global app.instance_path is not accessible from blueprints ¯\_(ツ)_/¯.
+TEST_CASES_PATH = os.path.abspath(__file__ + "/../../../test-cases/headers/")
 
 
-@headers_module.route("/content-location")
+@headers_module.route("/content-location/")
 def content_location():
   r = Response(status=201)
   r.headers["Content-Location"] = "/test/headers/content-location.found"
   return r
 
 
-@headers_module.route("/link")
+@headers_module.route("/link/")
 def link():
   r = Response(status=200)
   r.headers["Link"] = "</test/headers/link.found>; rel=\"preload\""
   return r
 
 
-@headers_module.route("/location")
+@headers_module.route("/location/")
 def location():
   r = Response(status=301)
   r.headers["Location"] = "/test/headers/location.found"
   return r
 
 
-@headers_module.route("/refresh")
+@headers_module.route("/refresh/")
 def refresh():
   r = Response(status=200)
   r.headers["Refresh"] = "0; url=/test/headers/refresh.found"
   return r
 
 
+@headers_module.route("/", defaults={"path": ""})
 @headers_module.route("/<path:path>")
 def html_dir(path):
-  return send_from_directory("test-cases/headers", path)
+  """Lists contents of requested directory."""
+  requested_path = os.path.join(TEST_CASES_PATH, path)
+  if not os.path.exists(requested_path):
+    return abort(404)
+
+  if os.path.isdir(requested_path):
+    files = os.listdir(requested_path)
+    return render_template("list-headers-dir.html", files=files, path=path)
+
+  if os.path.isfile(requested_path):
+    return send_from_directory("test-cases/headers", path)

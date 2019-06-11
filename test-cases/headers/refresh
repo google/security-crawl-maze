@@ -1,0 +1,3 @@
+Placeholder for test case of the REFRESH response header.
+The existence of this file is needed so that a link to the handler is generated.
+Handler located in /blueprints/headers/__init__.py.
