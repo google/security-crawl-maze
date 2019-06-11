@@ -1,0 +1,3 @@
+Placeholder for test case of an anchor tag with a path relative url.
+The existence of this file is needed so that a link to the handler is generated.
+Handler located in /blueprints/html/__init__.py.
