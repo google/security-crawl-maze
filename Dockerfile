@@ -21,8 +21,6 @@ COPY blueprints /usr/src/app/blueprints
 COPY templates /usr/src/app/templates
 COPY test-cases /usr/src/app/test-cases
 
-# Expose the Flask app's port.
-EXPOSE 5000
-
-# Run the application.
+# Run the application. Default port is 8080.
+# If you want to change it, pass a $PORT env variable.
 CMD ["python", "/usr/src/app/app.py"]

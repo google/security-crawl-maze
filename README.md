@@ -28,7 +28,7 @@ container or as a Python Flask app. Please, find the instructions below.
 
 1.  pull the project and enter the project's directory
 2.  build the docker image `docker build -t crawlmaze .`
-3.  run the image and expose port 80 `docker run -p 80:5000 --name crawlmaze
+3.  run the image and expose port 80 `docker run -p 80:8080 --name crawlmaze
     crawlmaze`
 4.  to remove the container `docker rm -f crawlmaze`
 

@@ -13,6 +13,7 @@
 # limitations under the License.
 # ==============================================================================
 """The entry point for Flask App serving the testbed"s content."""
+import os
 from blueprints.headers import headers_module
 from blueprints.html import html_module
 from blueprints.javascript import javascript_module
@@ -33,4 +34,4 @@ def index():
 
 
 if __name__ == "__main__":
-  app.run(host="0.0.0.0")
+  app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
