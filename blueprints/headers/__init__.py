@@ -16,6 +16,7 @@
 import os
 from flask import abort
 from flask import Blueprint
+from flask import make_response
 from flask import render_template
 from flask import Response
 from flask import send_from_directory
@@ -29,20 +30,21 @@ TEST_CASES_PATH = os.path.abspath(__file__ + "/../../../test-cases/headers/")
 
 @headers_module.route("/content-location/")
 def content_location():
-  r = Response(status=201)
+  r = make_response(render_template("content-location-header.html"), 201)
   r.headers["Content-Location"] = "/test/headers/content-location.found"
   return r
 
 
 @headers_module.route("/link/")
 def link():
-  r = Response(status=200)
+  r = make_response(render_template("link-header.html"), 200)
   r.headers["Link"] = "</test/headers/link.found>; rel=\"preload\""
   return r
 
 
 @headers_module.route("/location/")
 def location():
+  # Not rendering a response because it will be redirected anyway.
   r = Response(status=301)
   r.headers["Location"] = "/test/headers/location.found"
   return r
@@ -50,8 +52,8 @@ def location():
 
 @headers_module.route("/refresh/")
 def refresh():
-  r = Response(status=200)
-  r.headers["Refresh"] = "0; url=/test/headers/refresh.found"
+  r = make_response(render_template("refresh-header.html"), 200)
+  r.headers["Refresh"] = "999; url=/test/headers/refresh.found"
   return r
 
 

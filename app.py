@@ -17,20 +17,38 @@ import os
 from blueprints.headers import headers_module
 from blueprints.html import html_module
 from blueprints.javascript import javascript_module
+from blueprints.misc import misc_module
 from blueprints.utils import utils_module
 from flask import Flask
+from flask import make_response
 from flask import render_template
 
 app = Flask(__name__)
 app.register_blueprint(headers_module, url_prefix="/headers")
 app.register_blueprint(html_module, url_prefix="/html")
 app.register_blueprint(javascript_module, url_prefix="/javascript")
+app.register_blueprint(misc_module, url_prefix="/misc")
 app.register_blueprint(utils_module)
 
 
 @app.route("/")
 def index():
   return render_template("index.html")
+
+
+@app.route("/robots.txt")
+def robots():
+  content = "User-agent: *\nDisallow: /test/misc/known-files/robots.txt.found"
+  r = make_response(content, 200)
+  r.headers["Content-Type"] = "text/plain"
+  return r
+
+
+@app.route("/sitemap.xml")
+def sitemap():
+  r = make_response(render_template("sitemap.xml"), 200)
+  r.headers["Content-Type"] = "application/xml"
+  return r
 
 
 if __name__ == "__main__":

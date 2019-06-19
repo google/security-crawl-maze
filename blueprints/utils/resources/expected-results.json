@@ -47,5 +47,7 @@
   "/html/misc/string/dot-dot-slash-prefix.found",
   "/html/misc/string/dot-slash-prefix.found",
   "/html/misc/string/url-string.found",
-  "/html/misc/string/string-known-extension.pdf"
+  "/html/misc/string/string-known-extension.pdf",
+  "/misc/known-files/robots.txt.found",
+  "/misc/known-files/sitemap.xml.found"
 ]

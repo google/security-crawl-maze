@@ -42,6 +42,10 @@ container or as a Python Flask app. Please, find the instructions below.
 
 1.  You can use the Dockerfile in the root directory to build a container image and deploy it to a cloud of your choice.
 
+### Use public version
+
+There is a publicly available instance of the application running at [http(s)://security-crawl-maze.app](https://security-crawl-maze.app).
+
 ### Conventions
 
 #### Naming
