@@ -14,6 +14,7 @@
 # ==============================================================================
 """The entry point for Flask App serving the testbed"s content."""
 import os
+from blueprints.css import css_module
 from blueprints.headers import headers_module
 from blueprints.html import html_module
 from blueprints.javascript import javascript_module
@@ -24,6 +25,7 @@ from flask import make_response
 from flask import render_template
 
 app = Flask(__name__)
+app.register_blueprint(css_module, url_prefix="/css")
 app.register_blueprint(headers_module, url_prefix="/headers")
 app.register_blueprint(html_module, url_prefix="/html")
 app.register_blueprint(javascript_module, url_prefix="/javascript")

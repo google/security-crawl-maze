@@ -1,0 +1,12 @@
+<h1>
+  css/{{ path }}
+</h1>
+<ul>
+    {% for file in files %}
+      {% if file.endswith(".html") %}
+        <li><a href="/css/{{ path }}{{ file }}">{{ file }}</a></li>
+      {% else %}
+        <li><a href="/css/{{ path }}{{ file }}/">{{ file }}/</a></li>
+      {% endif %}
+    {% endfor %}
+</ul>
