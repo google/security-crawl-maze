@@ -16,15 +16,46 @@
 import os
 from flask import abort
 from flask import Blueprint
+from flask import make_response
 from flask import render_template
 from flask import Response
 from flask import send_from_directory
+from flask import url_for
 
 javascript_module = Blueprint(
     "javascript_module", __name__, template_folder="templates")
 
 # Global app.instance_path is not accessible from blueprints ¯\_(ツ)_/¯.
 TEST_CASES_PATH = os.path.abspath(__file__ + "/../../../test-cases/javascript/")
+
+
+@javascript_module.route("/misc/comment.js")
+def comment():
+  content = "// " + url_for(
+      "index", _external=True) + "test/javascript/misc/comment.found"
+  r = make_response(content, 200)
+  r.headers["Content-Type"] = "application/javascript"
+  return r
+
+
+@javascript_module.route("/misc/string-variable.js")
+def string_variable():
+  content = "var url = \"" + url_for(
+      "index", _external=True) + "test/javascript/misc/string-variable.found\";"
+  r = make_response(content, 200)
+  r.headers["Content-Type"] = "application/javascript"
+  return r
+
+
+@javascript_module.route("/misc/string-concat-variable.js")
+def string_concat_variable():
+  content = "var domain = \"" + url_for(
+      "index", _external=True
+  ) + ("\";var path = \"test/javascript/misc/string-concat-variable.found\";var"
+       " full = domain + path;")
+  r = make_response(content, 200)
+  r.headers["Content-Type"] = "application/javascript"
+  return r
 
 
 @javascript_module.route("/", defaults={"path": ""})

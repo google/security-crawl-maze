@@ -51,6 +51,9 @@
   "/html/misc/string/dot-slash-prefix.found",
   "/html/misc/string/url-string.found",
   "/html/misc/string/string-known-extension.pdf",
+  "/javascript/misc/comment.found",
+  "/javascript/misc/string-variable.found",
+  "/javascript/misc/string-concat-variable.found",
   "/misc/known-files/robots.txt.found",
   "/misc/known-files/sitemap.xml.found"
 ]
