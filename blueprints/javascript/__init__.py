@@ -47,6 +47,14 @@ def string_variable():
   return r
 
 
+@javascript_module.route("/frameworks/angular/")
+def angular_root():
+  # Redirect straight to the Angular app entry point.
+  r = Response(status=301)
+  r.headers["Location"] = "/javascript/frameworks/angular/index.html"
+  return r
+
+
 @javascript_module.route("/misc/string-concat-variable.js")
 def string_concat_variable():
   content = "var domain = \"" + url_for(

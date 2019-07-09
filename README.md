@@ -18,6 +18,8 @@ e-commerce systems) and many other.
 
 ## Run / deploy the application
 
+NOTE: Test cases for JS frameworks have to be built and bundled in order to work. If you use Docker, everything is automated. However, if you don't, you will have to build the projects manually.
+
 The primary goal was to be able to run and deploy the app easily in any
 environment. Therefore, we provide a Dockerfile which enables you to deploy it
 to any cloud that is run by a provider of your choice. For local development or
@@ -32,7 +34,7 @@ container or as a Python Flask app. Please, find the instructions below.
     crawlmaze`
 4.  to remove the container `docker rm -f crawlmaze`
 
-### Run locally as a Flask app
+### Run locally as a Flask app (Does not support JS frameworks)
 
 1.  pull the project and enter the project's directory
 2.  install pip dependencies `pip install -r requirements.txt`

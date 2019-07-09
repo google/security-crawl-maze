@@ -55,6 +55,8 @@
   "/javascript/misc/comment.found",
   "/javascript/misc/string-variable.found",
   "/javascript/misc/string-concat-variable.found",
+  "/javascript/frameworks/angular/event-handler.found",
+  "/javascript/frameworks/angular/router-outlet.found",
   "/misc/known-files/robots.txt.found",
   "/misc/known-files/sitemap.xml.found"
 ]
