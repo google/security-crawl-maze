@@ -55,6 +55,14 @@ def angular_root():
   return r
 
 
+@javascript_module.route("/frameworks/polymer/")
+def polymer_root():
+  # Redirect straight to the Polymer app entry point.
+  r = Response(status=301)
+  r.headers["Location"] = "/javascript/frameworks/polymer/index.html"
+  return r
+
+
 @javascript_module.route("/misc/string-concat-variable.js")
 def string_concat_variable():
   content = "var domain = \"" + url_for(
