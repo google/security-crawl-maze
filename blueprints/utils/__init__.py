@@ -16,6 +16,8 @@
 import json
 import os
 import re
+import random
+import string
 from flask import abort
 from flask import Blueprint
 from flask import jsonify
@@ -54,6 +56,11 @@ def fetch_expected_results():
 def valid_resource(path):
   """Returns a 200 response for files that are supposed to be found by crawlers."""
   if re.match(PATH_REGEX, path):
-    return Response(path, 200)
+    return Response(random_response(), 200)
 
   abort(404)
+
+
+def random_response():
+  letters = string.ascii_letters + "\n "
+  return "\n".join(random.choice(letters) for i in range(1000))
