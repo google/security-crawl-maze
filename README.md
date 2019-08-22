@@ -42,7 +42,8 @@ container or as a Python Flask app. Please, find the instructions below.
 
 ### Deploy to Google Cloud/AWS/Azure
 
-1.  You can use the Dockerfile in the root directory to build a container image and deploy it to a cloud of your choice.
+[![Run on Google Cloud](https://storage.googleapis.com/cloudrun/button.svg)](https://console.cloud.google.com/cloudshell/editor?shellonly=true&cloudshell_image=gcr.io/cloudrun/button&cloudshell_git_repo=https://github.com/google/security-crawl-maze)
+or use the Dockerfile in the root directory to build a container image and deploy it to any other cloud of your choice.
 
 ### Use public version
 
