@@ -63,6 +63,14 @@ def polymer_root():
   return r
 
 
+@javascript_module.route("/frameworks/react/")
+def react_root():
+  # Redirect straight to the React app entry point.
+  r = Response(status=301)
+  r.headers["Location"] = "/javascript/frameworks/react/index.html"
+  return r
+
+
 @javascript_module.route("/misc/string-concat-variable.js")
 def string_concat_variable():
   content = "var domain = \"" + url_for(

@@ -64,6 +64,8 @@
   "/javascript/frameworks/angular/router-outlet.found",
   "/javascript/frameworks/polymer/event-handler.found",
   "/javascript/frameworks/polymer/polymer-router.found",
+  "/javascript/frameworks/react/route-path.found",
+  "/javascript/frameworks/react/index.html/search.found",
   "/misc/known-files/robots.txt.found",
   "/misc/known-files/sitemap.xml.found"
 ]

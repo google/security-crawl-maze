@@ -23,6 +23,12 @@ WORKDIR /tmp/polymer
 RUN npm install
 RUN polymer build --bundle --base-path=/javascript/frameworks/polymer/
 
+# Build React app.
+COPY test-cases/javascript/frameworks/react /tmp/react
+WORKDIR /tmp/react
+RUN npm install
+RUN npm run build
+
 ##########################
 # Build production image.#
 ##########################
@@ -55,6 +61,9 @@ COPY --from=builder /tmp/angular/dist/angular /usr/src/app/test-cases/javascript
 # Polymer
 RUN rm -rf /usr/src/app/test-cases/javascript/frameworks/polymer/*
 COPY --from=builder /tmp/polymer/build/default /usr/src/app/test-cases/javascript/frameworks/polymer
+# React
+RUN rm -rf /usr/src/app/test-cases/javascript/frameworks/react/*
+COPY --from=builder /tmp/react/build /usr/src/app/test-cases/javascript/frameworks/react
 
 # Run the application. Default port is 8080.
 # If you want to change it, pass a $PORT env variable.
