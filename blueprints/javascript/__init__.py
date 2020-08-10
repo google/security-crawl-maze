@@ -54,6 +54,12 @@ def angular_root():
   r.headers["Location"] = "/javascript/frameworks/angular/index.html"
   return r
 
+@javascript_module.route("/frameworks/angularjs/")
+def angularjs_root():
+  # Redirect straight to the AngularJs app entry point.
+  r = Response(status=301)
+  r.headers["Location"] = "/javascript/frameworks/angularjs/index.html"
+  return r
 
 @javascript_module.route("/frameworks/polymer/")
 def polymer_root():
