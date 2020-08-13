@@ -62,6 +62,7 @@
   "/javascript/misc/string-concat-variable.found",
   "/javascript/frameworks/angular/event-handler.found",
   "/javascript/frameworks/angular/router-outlet.found",
+  "/javascript/frameworks/angularjs/ng-href.found",
   "/javascript/frameworks/polymer/event-handler.found",
   "/javascript/frameworks/polymer/polymer-router.found",
   "/javascript/frameworks/react/route-path.found",
