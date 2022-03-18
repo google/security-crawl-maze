@@ -1,7 +1,7 @@
 # The builder image is used to install all the tools required to build one page applications.
 # All the tools are abandoned after the production image is built. It lets us
 # create a very lightweight container with bundled files without any node tools.
-FROM node:10-alpine AS builder
+FROM node:14-alpine AS builder
 
 # Allows npm to run within the context of the running script.
 # Needed to install Angular CLI.
