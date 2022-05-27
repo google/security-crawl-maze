@@ -47,34 +47,28 @@ def string_variable():
   return r
 
 
-@javascript_module.route("/frameworks/angular/")
-def angular_root():
-  # Redirect straight to the Angular app entry point.
-  r = Response(status=301)
-  r.headers["Location"] = "/javascript/frameworks/angular/index.html"
-  return r
-
-@javascript_module.route("/frameworks/angularjs/")
-def angularjs_root():
-  # Redirect straight to the AngularJs app entry point.
-  r = Response(status=301)
-  r.headers["Location"] = "/javascript/frameworks/angularjs/index.html"
-  return r
-
-@javascript_module.route("/frameworks/polymer/")
-def polymer_root():
-  # Redirect straight to the Polymer app entry point.
-  r = Response(status=301)
-  r.headers["Location"] = "/javascript/frameworks/polymer/index.html"
-  return r
+@javascript_module.route("/frameworks/angular/", defaults={"path": ""})
+@javascript_module.route("/frameworks/angular/<path:path>")
+def angular(path):
+  return serve_framework_resource_or_root("angular", path)
 
 
-@javascript_module.route("/frameworks/react/")
-def react_root():
-  # Redirect straight to the React app entry point.
-  r = Response(status=301)
-  r.headers["Location"] = "/javascript/frameworks/react/index.html"
-  return r
+@javascript_module.route("/frameworks/angularjs/", defaults={"path": ""})
+@javascript_module.route("/frameworks/angularjs/<path:path>")
+def angularjs(path):
+  return serve_framework_resource_or_root("angularjs", path)
+
+
+@javascript_module.route("/frameworks/polymer/", defaults={"path": ""})
+@javascript_module.route("/frameworks/polymer/<path:path>")
+def polymer(path):
+  return serve_framework_resource_or_root("polymer", path)
+
+
+@javascript_module.route("/frameworks/react/", defaults={"path": ""})
+@javascript_module.route("/frameworks/react/<path:path>")
+def react(path):
+  return serve_framework_resource_or_root("react", path)
 
 
 @javascript_module.route("/misc/string-concat-variable.js")
@@ -102,3 +96,17 @@ def html_dir(path):
 
   if os.path.isfile(requested_path):
     return send_from_directory("test-cases/javascript", path)
+
+
+def serve_framework_resource_or_root(framework, path):
+  directory = os.path.join(TEST_CASES_PATH, "frameworks", framework)
+  requested_file = os.path.join(directory, path)
+  if os.path.isfile(requested_file):
+    return send_from_directory(directory, path)
+  else:
+    return serve_framework_root(framework)
+
+
+def serve_framework_root(framework):
+  root_path = os.path.join(TEST_CASES_PATH, "frameworks", framework)
+  return send_from_directory(root_path, "index.html")

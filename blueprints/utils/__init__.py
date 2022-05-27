@@ -15,8 +15,8 @@
 """Module containing all utility functions used in the application."""
 import json
 import os
-import re
 import random
+import re
 import string
 from flask import abort
 from flask import Blueprint
