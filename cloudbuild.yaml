@@ -8,6 +8,6 @@ steps:
   args: ['push', 'gcr.io/$PROJECT_ID/security-crawl-maze']
   # Deploy container image to Cloud Run
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['beta', 'run', 'deploy', 'security-crawl-maze', '--image', 'gcr.io/$PROJECT_ID/security-crawl-maze', '--region', 'us-central1', '--platform', 'managed']
+  args: ['run', 'deploy', 'security-crawl-maze', '--image', 'gcr.io/$PROJECT_ID/security-crawl-maze', '--region', 'us-central1', '--platform', 'managed', '--timeout', '30m']
 images:
 - gcr.io/$PROJECT_ID/security-crawl-maze
