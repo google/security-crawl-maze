@@ -57,6 +57,7 @@
   "/html/misc/string/dot-slash-prefix.found",
   "/html/misc/string/url-string.found",
   "/html/misc/string/string-known-extension.pdf",
+  "/javascript/misc/automatic-post.found",
   "/javascript/misc/comment.found",
   "/javascript/misc/string-variable.found",
   "/javascript/misc/string-concat-variable.found",
@@ -67,6 +68,9 @@
   "/javascript/frameworks/polymer/polymer-router.found",
   "/javascript/frameworks/react/route-path.found",
   "/javascript/frameworks/react/index.html/search.found",
+  "/javascript/interactive/js-delete.found",
+  "/javascript/interactive/js-post.found",
+  "/javascript/interactive/js-put.found",
   "/misc/known-files/robots.txt.found",
   "/misc/known-files/sitemap.xml.found"
 ]

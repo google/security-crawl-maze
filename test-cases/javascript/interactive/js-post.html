@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>CrawlMaze - Testbed for Web Crawlers - form tag</title>
+<h1> POST method from JavaScript </h1>
+<input type="button" onClick="myFunction()" id = 'btn' value="Submit">
+<p>
+  The POST request is sent via JavaScript fetch when the button is clicked.
+</p>
+
+<script>
+    function myFunction(){
+        fetch("/test/javascript/interactive/js-post.found", {method: "POST"});
+    }
+</script>

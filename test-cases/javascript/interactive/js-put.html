@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>CrawlMaze - Testbed for Web Crawlers - form tag</title>
+<h1> PUT method from JavaScript </h1>
+<input type="button" onClick="myFunction()" id = 'btn' value="Submit">
+<p>
+  The PUT request is sent via JavaScript fetch when the button is clicked.
+</p>
+
+<script>
+    function myFunction(){
+        fetch("/test/javascript/interactive/js-put.found", {method: "PUT"});
+    }
+</script>
