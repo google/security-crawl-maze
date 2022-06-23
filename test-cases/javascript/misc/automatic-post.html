@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body >
+    <title>CrawlMaze - Testbed for Web Crawlers - form tag</title>
+    <h1> Automatic POST </h1>
+    <p>
+    A POST request is automatically sent five seconds after opening the page.
+    </p>
+</body>
+
+<script>
+  setTimeout(function() {
+      fetch("/test/javascript/misc/automatic-post.found", {method: "POST"});
+  }, 5000)
+</script>
+
