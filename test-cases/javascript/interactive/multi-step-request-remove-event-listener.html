@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body onload="deleteSecretButton();" id="thebody">
+    <title>CrawlMaze - Testbed for Web Crawlers - form tag</title>
+    <h1> multi-step GET method with disappearing button and removeEventListener call </h1>
+    <input type="button" onClick="showSecretButton();" value='show secret button' id='but'/>
+    <input type="button" onClick="removeButton();" value='decoy button' id='decoy'/>
+    <p>
+      When the 'show secret button' button is pressed, a new button is created in JavaScript. This new button has an EventListener that executes a GET request via JavaScript fetch when clicked. However, if the decoy button or any other part of the screen is clicked, the button is removed from the DOM, and the EventListener on the secret button is removed.
+    </p>
+</body>
+
+<script> 
+  function showSecretButton() {
+    if (document. getElementById('secretbutton') == null){
+        var tag = document.createElement("button");
+        tag.textContent = "click this secret button";
+        tag.id = 'secretbutton';
+        var element = document.getElementById("thebody");
+        element.appendChild(tag);
+        tag.addEventListener('click',sendReq);        
+    }
+  }
+  function sendReq(){
+    fetch("/test/javascript/interactive/multi-step-request-remove-event-listener.found", {method: "GET"});
+  }
+  function removeButton(){
+    var elem = document.getElementById('secretbutton');
+    if(elem!=null){
+      elem.removeEventListener('click', sendReq);
+      return elem.parentNode.removeChild(elem); 
+    }
+    return null;    
+  }
+  function deleteSecretButton(){
+      var ignoreClickOnMeElement = document.getElementById('but');
+      document.addEventListener('click',function(event) {
+          var isClickInsideElement = ignoreClickOnMeElement.contains(event.target);
+          if(!isClickInsideElement) {
+            var elem = document.getElementById('secretbutton');
+            if(elem!=null){
+              elem.removeEventListener('click', sendReq);
+              return elem.parentNode.removeChild(elem); 
+            }
+            return null;            
+          }
+      });
+  }
+</script>

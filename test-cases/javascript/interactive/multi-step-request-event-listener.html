@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body id="thebody">
+    <title>CrawlMaze - Testbed for Web Crawlers - form tag</title>
+    <h1> multi-step GET method with EventListener</h1>
+    <input type="button" onClick="showSecretButton();" value='show secret button' id='but'/>
+    <input type="button" onClick="doNothing();" value='decoy button' id='decoy'/>
+    <p>
+        When the 'show secret button' button is pressed, a new button is created in JavaScript. This new button has an EventListener that executes a GET request via JavaScript fetch when clicked.
+    </p>
+</body>
+
+<script> 
+    function showSecretButton() {
+      if (document.getElementById('secretbutton') == null){
+          var tag = document.createElement("button");
+          tag.textContent = "click this secret button";
+          tag.id = 'secretbutton';
+          var element = document.getElementById("thebody");
+          element.appendChild(tag);
+          tag.addEventListener('click',() => {
+              fetch("/test/javascript/interactive/multi-step-request-event-listener.found", {method: "GET"});
+          });
+      }
+    }
+    function doNothing(){
+        //do nothing
+    }
+  </script>
