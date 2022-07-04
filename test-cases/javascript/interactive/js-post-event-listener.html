@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body>
+    <title>CrawlMaze - Testbed for Web Crawlers - form tag</title>
+    <h1> POST method from JavaScript EventListener</h1>
+    <input type="button" id = 'btn' value="Submit">
+    <p>
+        The form-data is sent via JavaScript fetch when the button is clicked based on an EventListener registered via addEventListener.
+    </p>
+</body>
+
+<script>
+    btn = document.getElementById('btn')
+    btn.addEventListener('click',() => {
+        fetch("/test/javascript/interactive/js-post-event-listener.found", {method: "POST"});
+    })
+</script>
