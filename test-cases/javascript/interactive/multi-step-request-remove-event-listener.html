@@ -10,7 +10,7 @@
     </p>
 </body>
 
-<script> 
+<script>
   const id = 'secretbutton';
   function showSecretButton() {
     if (document. getElementById(id) == null){
@@ -18,7 +18,7 @@
         tag.textContent = "click this secret button";
         tag.id = id;
         document.body.appendChild(tag);
-        tag.addEventListener('click',sendReq);        
+        tag.addEventListener('click',sendReq);
     }
   }
   function sendReq(){
@@ -28,7 +28,7 @@
     var elem = document.getElementById(id);
     if(elem!=null){
       elem.removeEventListener('click', sendReq);
-      return elem.parentNode.removeChild(elem); 
+      return elem.parentNode.removeChild(elem);
     }
   }
   function deleteSecretButton(){
@@ -39,7 +39,7 @@
             var elem = document.getElementById(id);
             if(elem!=null){
               elem.removeEventListener('click', sendReq);
-              return elem.parentNode.removeChild(elem); 
+              return elem.parentNode.removeChild(elem);
             }
           }
       });
