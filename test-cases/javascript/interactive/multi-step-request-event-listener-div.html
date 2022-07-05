@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body>
+    <title>CrawlMaze - Testbed for Web Crawlers - multi-step request with div EventListener before DOM addition </title>
+    <h1> multi-step GET method with EventListener before adding to DOM </h1>
+    <input type="button" onClick="showSecretButton();" value='show secret button' id='but'/>
+    <p>
+        When the 'show secret button' button is pressed, a new div is created in JavaScript. This new div has an EventListener that executes a GET request via JavaScript fetch when clicked. However, the EventListener is added to the element before the element is added to the DOM.
+    </p>
+</body>
+
+<script>
+    function showSecretButton() {
+      const id = 'secretbutton';
+      if (document.getElementById(id) == null){
+          var tag = document.createElement("div");
+          tag.textContent = "click this secret button";
+          tag.id = id;
+          document.body.appendChild(tag);
+          tag.addEventListener('click',() => {
+              fetch("/test/javascript/interactive/multi-step-request-event-listener-div.found", {method: "GET"});
+          });
+      }
+    }
+  </script>
