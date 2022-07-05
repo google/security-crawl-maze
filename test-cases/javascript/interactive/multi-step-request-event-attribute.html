@@ -3,15 +3,15 @@
 <body>
     <title>CrawlMaze - Testbed for Web Crawlers - multi-step request with event attribute </title>
     <h1> multi-step GET method </h1>
-    <input type="button" onClick="showSecretButton();" value='show secret button'/>
+    <input type="button" onClick="showSecretButton();" value="show secret button"/>
     <p>
         When the 'show secret button' button is pressed, a new button is created in JavaScript. This new button executes a function onClick, which executes a GET request via JavaScript fetch.
     </p>
 </body>
 
-<script> 
+<script>
     function showSecretButton() {
-      const id = 'secretbutton';
+      const id = "secretbutton";
       if (document. getElementById(id) == null){
           var tag = document.createElement("button");
           tag.textContent = "click this secret button";
