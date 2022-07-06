@@ -3,15 +3,15 @@
 <body>
   <title>CrawlMaze - Testbed for Web Crawlers - POST with EventListener and event attribute </title>
   <h1> POST requests from onclick and event listeners </h1>
-  <input type="button" onClick="sendReq();" id = 'btn' value="Submit">
+  <input type="button" onClick="sendReq();" id = "btn" value="Submit">
   <p>
     When the button is clicked, two requests are triggered, one by an EventListener registered via addEventListener and the other based on the button's onclick attribute.
   </p>
 </body>
 
 <script>
-    btn = document.getElementById('btn')
-    btn.addEventListener('click',() => {
+    btn = document.getElementById("btn")
+    btn.addEventListener("click",() => {
         fetch("/test/javascript/interactive/listener-and-event-attribute-first.found", {method: "POST"});
     })
     function sendReq(){

@@ -4,7 +4,7 @@
 <body>
   <title>CrawlMaze - Testbed for Web Crawlers - multi-step request with event attribute</title>
   <h1> multi-step GET method based on redefining the button's onclick function </h1>
-  <input type="button" onClick="myFunction();" id = 'btn' value="Submit">
+  <input type="button" onClick="myFunction();" id ="btn" value="Submit">
   <p>
     When the button is clicked, an eventListener is added that sends a GET request via JavaScript fetch. This is a somewhat odd edge-case, since we define several events that occur at once when clicking the button.
   </p>
@@ -12,7 +12,7 @@
 
 <script>
     function myFunction(){
-        btn = document.getElementById('btn')
+        btn = document.getElementById("btn")
         btn.onclick = function () {
               fetch("/test/javascript/interactive/multi-step-request-redefine-event-attribute.found", {method: "GET"});
           };

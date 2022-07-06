@@ -3,22 +3,22 @@
 <body onload="deleteSecretButton();">
     <title>CrawlMaze - Testbed for Web Crawlers - multi-step request with removed button </title>
     <h1> multi-step GET method with disappearing button </h1>
-    <input type="button" onClick="showSecretButton();" value='show secret button' id='but'/>
-    <input type="button" onClick="removeButton();" value='decoy button'/>
+    <input type="button" onClick="showSecretButton();" value="show secret button" id="but"/>
+    <input type="button" onClick="removeButton();" value="decoy button"/>
     <p>
       When the 'show secret button' button is pressed, a new button is created in JavaScript. This new button has an EventListener that executes a GET request via JavaScript fetch when clicked. However, if the decoy button or any other part of the screen is clicked, the button is removed from the DOM.
     </p>
 </body>
 
 <script>
-  const id = 'secretbutton';
+  const id = "secretbutton";
   function showSecretButton() {
     if (document.getElementById(id) == null){
         var tag = document.createElement("button");
         tag.textContent = "click this secret button";
         tag.id = id;
         document.body.appendChild(tag);
-        tag.addEventListener('click',sendReq);
+        tag.addEventListener("click",sendReq);
     }
   }
   function sendReq(){
@@ -31,8 +31,8 @@
     }
   }
   function deleteSecretButton(){
-      var ignoreClickOnMeElement = document.getElementById('but');
-      document.addEventListener('click',function(event) {
+      var ignoreClickOnMeElement = document.getElementById("but");
+      document.addEventListener("click",function(event) {
           var isClickInsideElement = ignoreClickOnMeElement.contains(event.target);
           if(!isClickInsideElement) {
             var elem = document.getElementById(id);
