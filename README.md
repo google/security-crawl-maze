@@ -87,8 +87,8 @@ returns:
 
 ```
 [
-    "/html/body/form/action.found",
-    "/html/body/form/button/formaction.found"
+    "/test/html/body/form/action.found",
+    "/test/html/body/form/button/formaction.found"
 ]
 ```
 

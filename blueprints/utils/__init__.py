@@ -30,9 +30,14 @@ ROOT_DIR = os.path.dirname(__file__)
 EXPECTED_RESULTS_FILE = open(
     os.path.join(ROOT_DIR, "resources/expected-results.json"), "r")
 EXPECTED_RESULTS = json.load(EXPECTED_RESULTS_FILE)
-# Remove trailing slash, join expexted paths with "|" and escape dots.
-PATHS_REGEX_STRING = "|".join(
-    [re.sub(r"^/", "", item) for item in EXPECTED_RESULTS]).replace(".", r"\.")
+# Results that don't start with '/test' should not
+# be handled by the valid_resource route.
+EXPECTED_RESULTS_WITH_TEST_PREFIX = filter(lambda r: r.startswith("/test/"),
+                                           EXPECTED_RESULTS)
+# Remove the '/test/' prefix, join expexted paths with "|" and escape dots.
+PATHS_REGEX_STRING = "|".join([
+    re.sub(r"^/test/", "", item) for item in EXPECTED_RESULTS_WITH_TEST_PREFIX
+]).replace(".", r"\.")
 PATH_REGEX = re.compile("^(" + PATHS_REGEX_STRING + ")$")
 
 
@@ -40,13 +45,13 @@ PATH_REGEX = re.compile("^(" + PATHS_REGEX_STRING + ")$")
 def fetch_expected_results():
   """Returns a list of expected findings from a starting path."""
   response_results = []
-  path = request.args.get("path", "")
+  path = request.args.get("path", "").lstrip("/")
 
   if not path:
     return Response("Please, provide the path parameter.", 400)
 
   for result in EXPECTED_RESULTS:
-    if result.startswith(path):
+    if result.lstrip("/test").startswith(path):
       response_results.append(result)
 
   return jsonify(response_results)
