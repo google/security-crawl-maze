@@ -47,7 +47,7 @@ def inline_url_string():
 
 
 @html_module.route("/", defaults={"path": ""})
-@html_module.route("/<path:path>")
+@html_module.route("/<path:path>/")
 def html_dir(path):
   """Lists contents of requested directory."""
   requested_path = os.path.join(TEST_CASES_PATH, path)
@@ -56,7 +56,7 @@ def html_dir(path):
 
   if os.path.isdir(requested_path):
     files = os.listdir(requested_path)
-    return render_template("list-html-dir.html", files=files, path=path)
+    return render_template("list-html-dir.html", files=files, path=path if path.endswith("/") else path + "/")
 
   if os.path.isfile(requested_path):
     return send_from_directory("test-cases/html", path)
