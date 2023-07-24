@@ -28,7 +28,7 @@ TEST_CASES_PATH = os.path.abspath(__file__ + "/../../../test-cases/misc/")
 
 
 @misc_module.route("/", defaults={"path": ""})
-@misc_module.route("/<path:path>")
+@misc_module.route("/<path:path>/")
 def html_dir(path):
   """Lists contents of requested directory."""
   requested_path = os.path.join(TEST_CASES_PATH, path)
@@ -37,7 +37,7 @@ def html_dir(path):
 
   if os.path.isdir(requested_path):
     files = os.listdir(requested_path)
-    return render_template("list-misc-dir.html", files=files, path=path)
+    return render_template("list-misc-dir.html", files=files, path=path if path.endswith("/") else path + "/")
 
   if os.path.isfile(requested_path):
     return send_from_directory("test-cases/misc", path)
