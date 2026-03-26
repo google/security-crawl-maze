@@ -8,7 +8,7 @@ FROM node:14-alpine AS builder
 RUN npm config set unsafe-perm true
 
 # Install JavaScript framework tools.
-RUN npm install -g @angular/cli
+RUN npm install -g @angular/cli@12.2.0
 RUN npm install -g polymer-cli
 
 # Build Angular app.
